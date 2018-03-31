@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp"
+    tools:showIn="@layout/activity_main"
+    tools:context=".MainActivity"
+    app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
+	>
+	
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Retrofit Accounts Repository"
+    android:textSize="24sp"
+    />
+
+<Button 
+	android:id="@+id/login_button"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Login"
+	android:onClick="onLogin"
+	/>	
+
+<Button 
+	android:id="@+id/list_accounts_button"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="List Accounts"
+	android:onClick="onListAccounts"
+	/>	
+</LinearLayout>
+
