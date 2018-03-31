@@ -31,12 +31,23 @@ public class RegisterActivity extends AppCompatActivity{
 	}
 
 	public void onRegister(View view){
+
+		String password        = inputPassword.getText().toString();
+		String passwordConfirm = inputPasswordConfirm.getText().toString();
+
 		user = new User(
 			inputUsername.getText().toString(),
 			inputEmail.getText().toString(),
-			inputPassword.getText().toString());
+			password
+		);
 
-
+		// If the password two fields don't match.
+		if(!password.equals(passwordConfirm)){
+			Toast.makeText(this, 
+				"Password mismatch - please type the password again", 
+				Toast.LENGTH_LONG).show();
+			return;
+		}
 		Toast.makeText(this, "Registering a new user: " + user.getUsername() 
 			, Toast.LENGTH_SHORT).show();
 	} 
