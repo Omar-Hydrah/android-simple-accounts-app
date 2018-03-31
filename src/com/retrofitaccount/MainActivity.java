@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
 {
 	private CoordinatorLayout mainLayout;
+	private final int REGISTER_ACTIVITY = 101;
 	// private Toolbar toolbar;
 
     /** Called when the activity is first created. */
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatActivity
     public void onRegister(View view){
     	Toast.makeText(MainActivity.this, "Register a new account"
     		, Toast.LENGTH_SHORT).show();
+
+    	startActivity(
+    		new Intent(MainActivity.this, RegisterActivity.class));
     }
 
 
@@ -48,13 +52,37 @@ public class MainActivity extends AppCompatActivity
     public void onLogin(View view){
     	Toast.makeText(MainActivity.this, "Login clicked" 
     		, Toast.LENGTH_SHORT).show();
+
+   		startActivity(
+   			new Intent(MainActivity.this, LoginActivity.class));	
     }
 
     // Handler for list accounts button (R.id.button_list_accounts)
     public void onListAccounts(View view){
     	Toast.makeText(MainActivity.this, "Listing accounts"
     		, Toast.LENGTH_SHORT).show();
+
+    	startActivity(
+    		new Intent(MainActivity.this, AccountsActivity.class));
     }
+
+
+    @Override
+    protected void onActivityResult(
+    	int requestCode, int resultCode, Intent data)
+    {
+    	super.onActivityResult(requestCode, resultCode, data);
+    	if(requestCode == this.REGISTER_ACTIVITY){
+    		if(resultCode == Activity.RESULT_OK){
+    			// Registeration succeeded
+
+    		}else{
+    			// Either email or username already exists.
+
+    		}
+    	}
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
