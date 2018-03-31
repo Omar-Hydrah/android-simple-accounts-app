@@ -2,4 +2,20 @@
 <resources>
     <string name="app_name">Retrofit Account</string>
     <string name="activity_main">Retrofit Account</string>
+    <string name="activity_accounts">Available Accounts</string>
+    <string name="activity_login">Login</string>
+    <string name="activity_register">Register new account</string>
+
+    <!-- User registeration form -->
+    <string name="label_username">Username</string>
+    <string name="label_password">Password</string>
+    <string name="label_password_confirm">Password Confirm</string>
+    <string name="label_email">Email</string>
+    <string name="label_email_or_username">Email or Username</string>
+
+    <!-- Buttons -->
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+    <string name="button_list_accounts">List Accounts</string>
+
 </resources>

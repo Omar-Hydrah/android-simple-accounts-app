@@ -18,5 +18,43 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+          android:name="LoginActivity"
+          android:theme="@style/AppTheme"
+          android:label="@string/activity_login"
+          android:parentActivityName="com.retrofitaccount.MainActivity"
+          >
+
+          <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.retrofitaccount.MainActivity"
+            />
+        </activity>
+        
+        <activity
+          android:name="RegisterActivity"
+          android:theme="@style/AppTheme"
+          android:label="@string/activity_register"
+          android:parentActivityName="com.retrofitaccount.MainActivity"
+          >
+          <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.retrofitaccount.MainActivity"
+            />
+        </activity>
+
+        <activity
+          android:name="AccountsActivity"
+          android:theme="@style/AppTheme"
+          android:label="@string/activity_accounts"
+          android:parentActivityName="com.retrofitaccount.MainActivity"
+          >
+          <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.retrofitaccount.MainActivity"
+            />
+        </activity>
+
     </application>
 </manifest>

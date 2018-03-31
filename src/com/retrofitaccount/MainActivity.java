@@ -37,13 +37,20 @@ public class MainActivity extends AppCompatActivity
     		, Toast.LENGTH_SHORT).show();
     }
 
-    // Handler for login button (R.id.login_button)
+    // Handler for the register button (R.id.button_register)
+    public void onRegister(View view){
+    	Toast.makeText(MainActivity.this, "Register a new account"
+    		, Toast.LENGTH_SHORT).show();
+    }
+
+
+    // Handler for login button (R.id.button_login)
     public void onLogin(View view){
     	Toast.makeText(MainActivity.this, "Login clicked" 
     		, Toast.LENGTH_SHORT).show();
     }
 
-    // Handler for list accounts button (R.id.list_accounts_button)
+    // Handler for list accounts button (R.id.button_list_accounts)
     public void onListAccounts(View view){
     	Toast.makeText(MainActivity.this, "Listing accounts"
     		, Toast.LENGTH_SHORT).show();
