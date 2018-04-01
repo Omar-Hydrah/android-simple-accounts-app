@@ -11,11 +11,16 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import android.arch.persistence.room.Room;
 
 public class MainActivity extends AppCompatActivity
 {
-	private CoordinatorLayout mainLayout;
-	private final int REGISTER_ACTIVITY = 101;
+    public static final String DATABASE = "users_database";
+
+    private CoordinatorLayout mainLayout;
+    private final int REGISTER_ACTIVITY = 101;
+    private AppDatabase database;
+
 	// private Toolbar toolbar;
 
     /** Called when the activity is first created. */
@@ -29,7 +34,10 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        database = Room.databaseBuilder(getApplicationContext(),
+            AppDatabase.class, DATABASE)
+            .allowMainThreadQueries()
+            .build();
     }
 
     // Click handler for floating action button
@@ -63,7 +71,7 @@ public class MainActivity extends AppCompatActivity
     		, Toast.LENGTH_SHORT).show();
 
     	startActivity(
-    		new Intent(MainActivity.this, AccountsActivity.class));
+    		new Intent(MainActivity.this, UsersActivity.class));
     }
 
 
@@ -99,6 +107,12 @@ public class MainActivity extends AppCompatActivity
     			Toast.makeText(MainActivity.this, 
     				"Menu Item selected" , Toast.LENGTH_SHORT).show();
     			break;
+
+            // Clears all users in the database
+            case R.id.action_clear_database:
+                Toast.makeText(this, "Clearing database items" 
+                    , Toast.LENGTH_SHORT).show();
+                break;
     	}
 
     	return true;

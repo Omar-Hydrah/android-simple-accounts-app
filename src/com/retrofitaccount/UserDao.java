@@ -17,4 +17,7 @@ public interface UserDao{
 
 	@Query("select * from users where username = :username")
 	User getUser(String username);
+
+	@Query("delete from users")
+	void deleteAllUsers();
 }

@@ -10,4 +10,10 @@
 		android:orderInCategory="101"
 		app:showAsAction="never"
 		/>
+	<item 
+		android:id="@+id/action_clear_database"
+		android:title="@string/menu_clear_database"
+		android:orderInCategory="102"
+		app:showAsAction="never"
+		/>
 </menu>

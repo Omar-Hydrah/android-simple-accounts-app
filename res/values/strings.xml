@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Retrofit Account</string>
     <string name="activity_main">Retrofit Account</string>
-    <string name="activity_accounts">Available Accounts</string>
+    <string name="activity_users">Available Accounts</string>
     <string name="activity_login">Login</string>
     <string name="activity_register">Register new account</string>
 
@@ -17,5 +17,8 @@
     <string name="button_login">Login</string>
     <string name="button_register">Register</string>
     <string name="button_list_accounts">List Accounts</string>
+
+    <!-- Menu Items -->
+    <string name="menu_clear_database">Clear Database</string>
 
 </resources>

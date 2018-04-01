@@ -45,9 +45,9 @@
         </activity>
 
         <activity
-          android:name="AccountsActivity"
+          android:name="UsersActivity"
           android:theme="@style/AppTheme"
-          android:label="@string/activity_accounts"
+          android:label="@string/activity_users"
           android:parentActivityName="com.retrofitaccount.MainActivity"
           >
           <meta-data
