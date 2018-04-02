@@ -1,12 +1,13 @@
 package com.retrofitaccount;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.content.Intent;
 import android.widget.Toast;
 import android.widget.EditText;
+import android.arch.persistence.room.Room;
 
 
 public class RegisterActivity extends AppCompatActivity{
@@ -16,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity{
 	private EditText inputPassword;
 	private EditText inputPasswordConfirm;
 	private User user;
+	private AppDatabase database;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -28,6 +30,10 @@ public class RegisterActivity extends AppCompatActivity{
 		inputPasswordConfirm = 
 			(EditText) findViewById(R.id.input_password_confirm);
 
+		database = Room.databaseBuilder(getApplicationContext(),
+			AppDatabase.class, MainActivity.DATABASE)
+			.allowMainThreadQueries()
+			.build();
 	}
 
 	public void onRegister(View view){
@@ -48,7 +54,29 @@ public class RegisterActivity extends AppCompatActivity{
 				Toast.LENGTH_LONG).show();
 			return;
 		}
-		Toast.makeText(this, "Registering a new user: " + user.getUsername() 
-			, Toast.LENGTH_SHORT).show();
+
+		// To check if a user already exists with the same username.
+
+		User existingUser = database.userDao().getUser(user.getUsername());
+
+		if(existingUser != null){
+
+			Toast.makeText(this
+				,"Username "+user.getUsername() +
+						" already exists - Choose another one." 
+				,Toast.LENGTH_LONG).show();
+			return; 
+
+		}else{
+			database.userDao().insertAll(user);
+			existingUser = null;
+
+			// A user has been inserted successfully.
+			Toast.makeText(this, "Registering a new user: " + user.getUsername() 
+				, Toast.LENGTH_SHORT).show();
+
+			// Navigate to UsersActivity to display the new user.
+			startActivity(new Intent(this, UsersActivity.class));
+		}
 	} 
 }
