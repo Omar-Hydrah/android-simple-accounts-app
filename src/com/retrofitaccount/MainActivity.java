@@ -119,8 +119,9 @@ public class MainActivity extends AppCompatActivity
 
             // Clears all users in the database
             case R.id.action_clear_database:
-                Toast.makeText(this, "Clearing database items" 
-                    , Toast.LENGTH_SHORT).show();
+                database.userDao().deleteAllUsers();
+                Snackbar.make(mainLayout, "Cleared database" 
+                    ,Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 break;
     	}
 
