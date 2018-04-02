@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity
 
     private CoordinatorLayout mainLayout;
     private final int REGISTER_ACTIVITY = 101;
+    private final int LOGIN_ACTIVITY = 102;
     private AppDatabase database;
 
 	// private Toolbar toolbar;
@@ -48,30 +50,25 @@ public class MainActivity extends AppCompatActivity
 
     // Handler for the register button (R.id.button_register)
     public void onRegister(View view){
-    	Toast.makeText(MainActivity.this, "Register a new account"
-    		, Toast.LENGTH_SHORT).show();
 
     	startActivity(
-    		new Intent(MainActivity.this, RegisterActivity.class));
+    		new Intent(this, RegisterActivity.class));
     }
 
 
     // Handler for login button (R.id.button_login)
     public void onLogin(View view){
-    	Toast.makeText(MainActivity.this, "Login clicked" 
-    		, Toast.LENGTH_SHORT).show();
 
-   		startActivity(
-   			new Intent(MainActivity.this, LoginActivity.class));	
+        // Request a user to login.
+   		startActivityForResult(
+   			new Intent(this, LoginActivity.class), LOGIN_ACTIVITY);	
     }
 
     // Handler for list accounts button (R.id.button_list_accounts)
     public void onListAccounts(View view){
-    	Toast.makeText(MainActivity.this, "Listing accounts"
-    		, Toast.LENGTH_SHORT).show();
 
     	startActivity(
-    		new Intent(MainActivity.this, UsersActivity.class));
+    		new Intent(this, UsersActivity.class));
     }
 
 
@@ -88,7 +85,19 @@ public class MainActivity extends AppCompatActivity
     			// Either email or username already exists.
 
     		}
-    	}
+    	}else if(requestCode == this.LOGIN_ACTIVITY){
+            if(resultCode == Activity.RESULT_OK){
+                // User login was successful.
+                String username = data.getStringExtra("username");
+
+                Snackbar.make(mainLayout, 
+                    "Welcome back " + username, Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null).show();
+
+            }else if(resultCode == Activity.RESULT_CANCELED){
+
+            }
+        }
     }
 
 

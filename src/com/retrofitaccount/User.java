@@ -3,6 +3,7 @@ package com.retrofitaccount;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.Ignore;
 
 
 @Entity(
@@ -27,6 +28,13 @@ public class User{
 		this.email    = email;
 		this.password = password;
 	}
+
+	@Ignore
+	public User(String username, String password){
+		this.username = username;
+		this.password = password;
+	}
+
 	public String getUsername() { return this.username; }
 	public void setUsername(String username) { this.username = username; }
 	public String getEmail() { return this.email; }
