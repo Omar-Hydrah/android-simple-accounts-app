@@ -13,7 +13,7 @@ public interface UserDao{
 	List<User> getAllUsers();
 
 	@Insert
-	void insertAll(User... user);
+	void insertAll(User... users);
 
 	@Query("select * from users where username = :username")
 	User getUser(String username);

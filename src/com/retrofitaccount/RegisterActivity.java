@@ -18,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity{
 	private EditText inputPasswordConfirm;
 	private User user;
 	private AppDatabase database;
+	public static final String TAG = "users";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -72,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity{
 			existingUser = null;
 
 			// A user has been inserted successfully.
-			Toast.makeText(this, "Registering a new user: " + user.getUsername() 
+			Toast.makeText(this, "Registered a new user: " + user.getUsername() 
 				, Toast.LENGTH_SHORT).show();
 
 			// Navigate to UsersActivity to display the new user.
